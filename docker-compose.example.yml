@@ -1,0 +1,16 @@
+services:
+  valkeystats:
+    container_name: valkeystats
+    image: l33tlamer/valkeystats
+    restart: unless-stopped
+    ### map port 8080 to whichever host port you like:
+    ports:
+      - 7734:8080
+    ### use either env vars for a single Valkey/Redis instance:
+    environment:
+      - "VALKEY_NAME=My Valkey"
+      - "VALKEY_HOST=valkey"
+      - "VALKEY_PORT=6379"
+  ### OR supply config file for multiple instances:
+  # volumes:
+  #   - ./config.php:/var/www/html/config.php
